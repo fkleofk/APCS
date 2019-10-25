@@ -1,0 +1,6 @@
+//--------------------------------------
+#ifdef local
+	freopen("UVa488_in.txt","r",stdin);
+	freopen("UVa488_out.txt","w",stdout);
+#endif
+//--------------------------------------
