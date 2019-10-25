@@ -1,26 +1,36 @@
 #include <iostream>
 using namespace std ;
 int main() {
-    int n ;
-    cin >> n ;
-    int a , b ;
-    while(cin >> a >> b ) {
-        for(int i = 1 ; i <= b ; i++) {
-            if (i!=1){
-		cout << endl  ;
+#ifdef local
+	freopen("UVa488_in.txt","r",stdin);
+	freopen("UVa488_out.txt","w",stdout);
+#endif
+	int n ;
+	cin >> n ;
+	int a , b ;
+	bool in=false;
+	while(cin >> a >> b ) {
+		if(!in)
+			in=true;
+		else
+			cout<<"\n";
+		for(int i = 1 ; i <= b ; i++) {
+			if (i!=1) {
+				cout << endl  ;
+			}
+			for ( int j = 1 ; j <= a ; j++) {
+				for (int q = 1 ; q <= j ; q++) {
+					cout << j ;
+				}
+				cout << "\n" ;
+			}
+			for ( int j = a-1 ; j >= 1 ; j--) {
+				for (int q = j ; q >= 1 ; q--) {
+					cout << j ;
+				}
+				cout << endl ;
+			}
+		}
+		
 	}
-	for ( int j = 1 ; j <= a ; j++) {
-                for (int q = 1 ; q <= j ; q++) {
-                    cout << j ;
-                }
-                cout << "\n" ; 
-            }
-            for ( int j = a-1 ; j >= 1 ; j--) {
-                for (int q = j ; q >= 1 ; q--) {
-                    cout << j ;
-                }
-            cout << endl ;
-        	}
-        }
-    }
 }
