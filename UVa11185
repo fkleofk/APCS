@@ -1,25 +1,30 @@
 #include<iostream>
-#include<math.h>
 using namespace std;
-int f(int n){
+void f(int n){
 	if(n<3){
-		return n;
+		cout << n;
+		return;
 	}
 	else{
-		int tmp = n%3;
-		return (f(n/3)*10 + tmp);
+		f(n/3);
+		cout <<n%3;
 	}
 }
-#ifdef local
-	
-
 int main() {
+//--------------------------------------
+#ifdef local
+	//freopen("UVa488_in.txt","r",stdin);
+	//freopen("UVa488_out.txt","w",stdout);
+#endif
+//--------------------------------------
 	long long int n ;
 	while(cin>>n) {
 		if (n<0)
 			break;
-		else
-			cout << f(n) << endl ;
-			}
+		else{
+			f(n);
+			cout << endl ;
+		}
+	}
 	return 0;
 }
