@@ -1,0 +1,26 @@
+#include<iostream>
+#include<stdio.h>
+#include<string.h>
+#include<string>
+#include<stdlib.h>
+#include<stack>
+using namespace std ;
+int main () {
+	int n  ; //有幾組測資 
+//	scanf("%d" , &n) ;
+	cin >> n ;
+	int i ;
+	int e ;
+	string c ;
+	while ( n ) {		
+		getline ( cin , c ) ;
+//		cout << n << endl ;				
+		if ( c == " " ) {
+			printf ( "space\n" ) ;
+		}
+		else {
+			cout << "NO\n" ;
+		}		
+		n-- ;
+	}
+}
