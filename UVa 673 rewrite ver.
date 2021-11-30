@@ -7,20 +7,81 @@
 using namespace std ;
 int main () {
 	int n  ; //有幾組測資 
-//	scanf("%d" , &n) ;
 	cin >> n ;
+	cin.get() ;
 	int i ;
 	int e ;
 	string c ;
-	while ( n ) {		
-		getline ( cin , c ) ;
-//		cout << n << endl ;				
+	stack<int> st ;
+	while ( n ) {
+		e = 0 ;
+		getline ( cin , c ) ;	
+			
 		if ( c == " " ) {
-			printf ( "space\n" ) ;
+			printf ( "Yes\n" ) ;
 		}
+		
 		else {
-			cout << "NO\n" ;
-		}		
+			for ( i = 0 ; i < sizeof ( n ) ; i++ ) {
+				
+				if ( c[i] == '(' ) {
+					st.push( 1 ) ;
+				}
+				
+				else if ( c[i] == '[' ) {
+					st.push( 2 ) ;
+				}
+				
+				else if ( c[i] == ')' ) {
+					
+					if ( st.empty() ) {
+						e = 1 ;						
+					}
+					
+					else {
+						
+						if ( st.top() == 1 ) {
+							st.pop() ;
+						}
+						
+						else {
+							e = 1 ;
+						}			
+					}
+				}
+					
+				else if ( c[i] == ']' ) {
+					
+					if ( st.empty() ) {
+						e = 1 ;	
+					}
+					
+					else {
+						if ( st.top() == 2 ) {
+							st.pop() ;
+						}
+						
+						else {
+							e = 1 ;
+						}
+					}
+				}	
+			}
+			
+			if ( st.empty() && e == 0 ) {
+				printf ( "Yes\n" ) ;
+			}
+			
+			else {
+				printf ( "No\n" ) ;
+			}
+					
+			while( !st.empty() ) {
+				st.pop() ;
+			}
+					
+		}
 		n-- ;
 	}
 }
+
