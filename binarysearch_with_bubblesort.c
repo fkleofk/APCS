@@ -1,16 +1,19 @@
 #include<stdio.h>
+#include<stdlib.h>
 void bubblesort ( int *arr , int count ) ;
 int binarysearch ( int *arr , int min , int max , int target ) ;
 int main () {
-	int count ;
+	int count = 0 ;
 	int target ;
 	int i ;
-	int arr[100] ;
-	scanf ( "%d" , &count ) ;
-	for ( i = 0 ; i < count ; i++ ) {
-		scanf ( "%d " , &arr[i] ) ;
+	int num ;
+	int *arr = ( int* ) malloc ( sizeof ( int ) ) ;
+	while ( scanf ( "%d" , &num ) != EOF ) {
+		arr[count++] = num ;
+		arr = realloc ( arr , count*sizeof ( int ) ) ;
 	}
-	scanf ( "%d" , &target ) ;
+	target = arr[count-1] ;
+	count-- ;
 	bubblesort ( arr , count ) ;
 	printf ( "After BubbleSort: ") ;
 	for ( i = 0 ; i < count ; i++ ) {
