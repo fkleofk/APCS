@@ -1,6 +1,5 @@
 #include<stdio.h>
 #include<stdlib.h>
-
 int main () {
 	int num ;
 	int count = 0 ;
@@ -13,7 +12,5 @@ int main () {
 	printf ( "Count: %d \n" , count ) ;
 	for ( i = 0 ; i < count ; i++ ) {
 		printf ( "%d " , arr[i] ) ;
-	}
-	
+	}	
 } 
-
