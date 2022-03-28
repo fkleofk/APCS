@@ -1,0 +1,49 @@
+module t0328 ( A , B , Out ) ;
+   input [15:0] A ;
+	input [15:0] B ;
+   output [2:0] Out ;
+   reg [2:0] Out ;
+	reg [2:0] w ;
+	task compare ;
+		input[3:0]I_A ;
+		input[3:0]I_B ;
+		output[2:0]S ; 
+			if( I_A > I_B ) {
+				S = 3'b100 ;
+			}
+			else if( I_A == I_B ) {
+				S = 3'b010 ;
+			}
+			else {
+				S = 3'b001 ;
+			} 
+	endtask
+	always @( A , B , w ) 
+		begin
+			compare(A[15:12],B[15:12],w) ;
+			if ( w == 3'b100 or w == 3'b001 ) {
+				Out = w ;
+			}
+			else {
+				compare(A[11:8],B[11:8],w) ;
+				if (w == 3'b100 or w == 3'b001 ) {
+					Out = w ;
+				}
+				else {
+					compare(A[7:4],B[7:4],w) ;
+					if ( w == 3'b100 or w == 3'b001 ) {
+						Out = w ;
+					}
+					else {
+						compare(A[3:0],B[3:0],w) ;
+						if ( w == 3'b100 or w == 3'b001 ) {
+							Out = w ;
+						}
+						else {
+							Out = 3'b010 ;
+						}
+					}
+				}
+			}
+		end
+endmodule 
